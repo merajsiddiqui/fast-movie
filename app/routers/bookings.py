@@ -1,7 +1,9 @@
 from fastapi import APIRouter, Depends
+from app.middleware.auth import JWTBearer
 
 router = APIRouter(
     prefix="/bookings",
+    dependencies=[Depends(JWTBearer())],
     tags=["bookings"],
     responses={404: {"description": "Not found"}},
 )
@@ -21,7 +23,7 @@ def confirm_booking(theater_id: str):
     }
 
 
-@router.delete("booking_id}/cancel")
+@router.delete("/{booking_id}/cancel")
 def cancel_booking(booking_id: str):
     return {
         "api": "Post"
