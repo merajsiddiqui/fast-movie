@@ -1,6 +1,8 @@
 from fastapi import FastAPI, HTTPException
 from app.routers import users, movies, theaters, bookings
-from app.models.response import Response
+
+from app.models.database import SessionLocal, engine
+models.Base.metadata.create_all(bind=engine)
 
 tags_metadata = [
     {
