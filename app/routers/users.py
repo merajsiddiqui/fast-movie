@@ -26,7 +26,7 @@ def login_user(login: LoginRequestBody):
         return JSONResponse(status_code=404, content={"error": authentication_error})
 
     token = signJWT(authenticated_user['email'])
-    print(token)
+
     return JSONResponse(status_code=200, content={
         'data': authenticated_user,
         'token': token
