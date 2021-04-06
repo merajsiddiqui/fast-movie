@@ -1,0 +1,45 @@
+version: '3'
+services:
+
+  #FAST API Service
+  app:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    volumes:
+      - ./app:/app
+    env_file: .env
+    ports:
+      - "8080:8080"
+      - "5678:5678"
+    networks:
+      - app-network
+
+
+  #Postgres Service
+  db:
+    image: postgres:12.4
+    restart: always
+    environment:
+      # if user, pass, and db changes, need to remove previous containers # docker-compose rm -vf
+      - POSTGRES_USER=app
+      - POSTGRES_PASSWORD=app
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U app" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    volumes:
+      - dbdata:/var/lib/mysql
+    networks:
+      - app-network
+
+#Docker Networks
+networks:
+  app-network:
+    driver: bridge
+
+#Volumes
+volumes:
+  dbdata:
+    driver: local

@@ -28,3 +28,21 @@ This is How Our Application is structured
  ┣ 📜 requirements.txt
  ┗ 📜 Dockerfile
 ```
+
+
+### Running Application Without DOCKER
+1.  Installing virtualenv 
+
+```shell
+macos   - brew install virtualenv
+debian  - apt-get install virtualenv
+```
+2.  Activate virtual environment and installing dependencies
+```shell
+virtualenv venv
+source venv/bin/activate
+pip install -r requirements.txt
+```
+
+
+
