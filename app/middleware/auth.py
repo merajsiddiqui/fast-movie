@@ -31,7 +31,7 @@ def verify_jwt(jwt_token: str) -> bool:
     except:
         payload = None
 
-    return True if payload is not None else False
+    return True if payload is not None and bool(payload) is True else False
 
 
 class JWTBearer(HTTPBearer):
