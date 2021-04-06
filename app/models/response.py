@@ -1,6 +1,6 @@
-from pydantic import  BaseModel
+from pydantic import BaseModel
+from typing import Dict, Optional
+
 
 class Response(BaseModel):
-    status: int
-    error: Dict
-    data: Dict
+    error:  Optional[Dict] = None

@@ -1,9 +1,11 @@
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter
+from app.models.response import Response
+
 
 router = APIRouter(
     prefix="/theaters",
     tags=["theaters"],
-    responses={404: {"description": "Not found"}},
+    responses={404: {'model': Response}},
 )
 
 

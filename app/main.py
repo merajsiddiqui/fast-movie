@@ -1,5 +1,6 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 from app.routers import users, movies, theaters, bookings
+from app.models.response import Response
 
 tags_metadata = [
     {

@@ -14,7 +14,7 @@ def signJWT(user_id: str) -> str:
         "user_id": user_id,
         "expires": time.time() + 600
     }
-    return jwt.encode(payload, JWT_SECRET, algorithm=JWT_ALGORITHM)
+    return jwt.encode(payload, JWT_SECRET, algorithm=JWT_ALGORITHM).decode('utf-8')
 
 
 def decodeJWT(token: str) -> dict:

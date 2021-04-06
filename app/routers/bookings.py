@@ -1,11 +1,12 @@
 from fastapi import APIRouter, Depends
 from app.middleware.auth import JWTBearer
+from app.models.response import Response
 
 router = APIRouter(
     prefix="/bookings",
     dependencies=[Depends(JWTBearer())],
     tags=["bookings"],
-    responses={404: {"description": "Not found"}},
+    responses={404: {'model': Response}},
 )
 
 
